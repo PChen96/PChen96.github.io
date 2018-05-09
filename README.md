@@ -1,6 +1,7 @@
 ## Welcome to Phillip Syntax Pages
 ### Csci 127 Project 1
 ```markdown
+
 ## Csci 127 Project Requires the use of 3 txt files under the project main
 ## Csci 127 Project main (1 out of 2) - 
 This program ask for you to input a sentence, if the sentence has 5 words or more its illegal.
@@ -13,7 +14,6 @@ Author: Phillip Chen
 Course: 135
 Instructor: Alex Nikolaev
 Assignment: Project 1 Task A
-
 */
 
 #include <iostream>
@@ -184,7 +184,6 @@ Author: Phillip Chen
 Course: 135
 Instructor: Alex Nikolaev
 Assignment: Project 1 Task A
-
 */
 
 #include <iostream>
@@ -378,7 +377,7 @@ for(int i = 0; i<input.length();i++){		//extract the words in the getline senten
 }
 
 ```
-## nouns used
+## "nouns" named txt file used in project A
 ```markdown
 people
 history
@@ -865,7 +864,7 @@ trainer
 uncle
 youth
 ```
-## pronouns used
+## "pronouns"  named txt file used in project A
 ```markdown
 your
 i
@@ -901,7 +900,7 @@ yours
 herself
 whoever
 ```
-## verbs used
+## "verbs" named txt file used in project A
 ```markdown
 is
 are
@@ -1104,8 +1103,7 @@ translate
 ```
 ### endd of project 1
 
-### Lab1
-
+### Lab1 (1 out of 2)
 the example uses the time from the computer and compares it to the sunset time you set
 if the computer time is before sunset time itll say good afternoon
 if the computer time is after sunset time itll say good evening
@@ -1115,7 +1113,6 @@ Author: Phillip Chen
 Course: {135,136}
 Instructor: Alexey Nikolaev
 Assignment: Lab 1 - Task B
-
 */
 
 #include <iostream>
@@ -1163,6 +1160,8 @@ int main () {
 }
 
 ```
+
+### Lab1 (2 out of 2)
 This program says good morning if the computer time is before noon (12)or
 good afternoon or good evening depending on the time you set for sunset
 it will also calculate when you'll arrive home when you provide commute time
@@ -1172,7 +1171,6 @@ Author: Phillip Chen
 Course: {135,136}
 Instructor: Alexey Nikolaev
 Assignment: Lab 1 - Task C
-
 */
 
 #include <iostream>
@@ -1236,7 +1234,7 @@ int main () {
 // if the computer time is before sunset time itll say good afternoon
 // if the computer time is after sunset time itll say good evening
 ```
-### Lab 2
+### Lab 2 (1 out of 2)
 Input a number from 1 - 20, program will request you to re-enter a number if you input wrong number
 after inputing a numbber from 1-20, it will raise 2 to that power
 ```markdown
@@ -1245,7 +1243,6 @@ Author: Phillip Chen
 Course: {135,136}
 Instructor: <Alex Nikolaev
 Assignment: Lab 2 task A
-
 */
 
 #include <iostream>
@@ -1271,7 +1268,7 @@ int main()
 }
 		
 ```
-
+### Lab 2 (2 out of 2)
 Using the verhulst Formula. After entering number, decimal, decimal, number, number.
 The loop function will give you the population for each year
 ```markdown
@@ -1341,7 +1338,7 @@ int main()
 }
 ```
 
-### Lab3
+### Lab3 (1 out of 5)
 Input 2 numbers for height and weight. The program will then use loop code to print out a 
 hallow rectangle based on the measurements you input.
 ```markdown
@@ -1350,9 +1347,8 @@ Author: Phillip Chen
 Course: {135,136}
 Instructor: <Alex Nikolaev
 Assignment: Lab 3 task A
-
-
 */
+
 #include <iostream>
 using namespace std;
 
@@ -1392,6 +1388,7 @@ cout<<endl;
 
 ```
 
+### Lab3 (2 out of 5)
 Ask for 1 input. Then prints out a right triangle with input as height
 ```markdown
 /*
@@ -1419,7 +1416,7 @@ for(int i=0;i<s;i++){
 	cout<<endl;}
 }
 ```
-
+### Lab3 (3 out of 5)
 Ask for 2 inputs. Then creates a trapeoid with width as a base 
 and growings rows above depending on the your height input.
 ```markdown
@@ -1457,6 +1454,7 @@ for(int i=0; i<h;i++){				//sets the boundary of how many rows
 }
 ```
 
+### Lab3 (4 out of 5)
 Ask for 1 input and outputs a right triangle with it's right located at the top right
 of print screen
 ```markdown
@@ -1489,7 +1487,7 @@ for (int i=0; i<s;i++){			//how many rows repeated
 }
 ```
 
-
+### Lab3 (5 out of 5)
 Ask for one input (diameter). Using the circle formula. if you subtract
 the center point with the x and y axis you will get negative numbers
 but that wouldnt matter because the circle formula square these numbers
@@ -1537,7 +1535,7 @@ for(double y=0; y<d;y++){
 			
 ```
 
-### Lab 4
+### Lab 4 (1 out of 4)
 Input two integars to computer C(n,k)
 overflows at C(13,1)
 ```markdown
@@ -1546,8 +1544,8 @@ Author: Phillip Chen
 Course: {135,136}
 Instructor: <Alex Nikolaev
 Assignment: Lab 4 task A
-
 */
+
 #include <iostream>
 using namespace std;
 
@@ -1586,7 +1584,7 @@ cin>>k;
 cout<<"C("<<n<<","<<k<<"): "<<finalprod<<endl;
 }
 ```
-
+### Lab 4 (2 out of 4)
 user inputs two intergers to compute C(n,k)
 Allows the user to compute k <= n/2
 if you attemp to plug in a k >n/2 you'll get the wrong answer
@@ -1596,8 +1594,8 @@ Author: Phillip Chen
 Course: {135,136}
 Instructor: <Alex Nikolaev
 Assignment: Lab 4 task B
-
 */
+
 #include <iostream>
 using namespace std;
 
@@ -1633,6 +1631,7 @@ cout<<"C("<<n<<","<<k<<"): "<<finalprod<<endl;
 }
 ```
 
+### Lab 4 (3 out of 4)
 user inputs two intergers to compute C(n,k)
 Allows the user to compute k <= n/2
 if you attemp to plug in a k >n/2 you'll get the wrong answer
@@ -1691,6 +1690,7 @@ cout<<"C("<<n<<","<<k<<"): "<<finalprod<<endl;
 }
 ```
 
+### Lab 4 (4 out of 4)
 Input two integars to compute C(n,k)
 this program can compute larger values of n and k
 ```markdown
@@ -1699,7 +1699,6 @@ Author: Phillip Chen
 Course: {135,136}
 Instructor: <Alex Nikolaev
 Assignment: Lab 4 task D
-
 */
 #include <iostream>
 using namespace std;
@@ -1726,6 +1725,7 @@ for(int i = 1; i < k+1; i++){
 cout<<"C("<<n<<","<<k<<"): "<<productb<<endl;
 }
 ```
+
 ### Lab 5
 This program takes one input, a non negative number. It tells you how many digits long that digit with a function
 ```markdown
