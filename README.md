@@ -1,4 +1,4 @@
-## Welcome to Phillip Syntax Pages
+## Welcome to Phillip's Syntax Pages
 
 ### Csci 127 Project main (1 out of 2) 
 This Project requires the use of 3 txt files under the project main. There are two types of main to used seperately from each other.
