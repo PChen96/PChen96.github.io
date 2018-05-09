@@ -2883,7 +2883,7 @@ void print(double poly[], int degree){
 }
 ```
 
-### Lab 9 (1 out of 2)
+### Lab 9 (2 out of 2)
 This program will store an polynomial and computes its value.
 First it will ask the highest degree in your polynomial ( x^degree ).
 Second it will ask you to input constants next to each coefficent degree 
