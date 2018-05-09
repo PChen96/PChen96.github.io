@@ -2047,8 +2047,3 @@ bool wellFormed(string s){
 }
 ```
 
-
-### Jekyll Themes
-
-
-### Support or Contact
