@@ -1,6 +1,6 @@
-### Welcome to Phillip Syntax Pages
+## Welcome to Phillip Syntax Pages
 
-## Csci 127 Project main (1 out of 2) 
+### Csci 127 Project main (1 out of 2) 
 This Project requires the use of 3 txt files under the project main. There are two types of main to used seperately from each other.
 This program ask for you to input a sentence, if the sentence has 5 words or more its illegal.
 The sentence is only legal if you used words provided in the notepads given for this project in a specific order.
