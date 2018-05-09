@@ -164,6 +164,7 @@ for(int i = 0; i<input.length();i++){		//extract the words in the getline senten
 		{fail++;cout<<"Your sentence is a legal sentence by rule {5}"<<endl;}
 	if(fail ==0){cout<<"Your sentence is not a legal sentence"<<endl;}
 	}
+```
 
 ### Csci 127 project main (2 out of 2) 
 This program will read a file called engsents.If the sentences inside has 5 words or more, it's illegal.
@@ -371,8 +372,8 @@ for(int i = 0; i<input.length();i++){		//extract the words in the getline senten
 		
 	}writeb.close();
 }
-
 ```
+
 ### "nouns" named txt file used in project A
 ```markdown
 people
@@ -860,6 +861,7 @@ trainer
 uncle
 youth
 ```
+
 ### "pronouns"  named txt file used in project A
 ```markdown
 your
@@ -896,6 +898,7 @@ yours
 herself
 whoever
 ```
+
 ### "verbs" named txt file used in project A
 ```markdown
 is
