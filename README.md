@@ -169,7 +169,7 @@ for(int i = 0; i<input.length();i++){		//extract the words in the getline senten
 
 
 ```
-## Csci 127 project main ( 2 out of 2) 
+### Csci 127 project main (2 out of 2) 
 This program will read a file called engsents.If the sentences inside has 5 words or more, it's illegal.
 The sentence is only legal if you used words provided in the notepads given for this project in a specific order.
 The word type and order is stated in the code.
@@ -377,7 +377,7 @@ for(int i = 0; i<input.length();i++){		//extract the words in the getline senten
 }
 
 ```
-## "nouns" named txt file used in project A
+### "nouns" named txt file used in project A
 ```markdown
 people
 history
@@ -864,7 +864,7 @@ trainer
 uncle
 youth
 ```
-## "pronouns"  named txt file used in project A
+### "pronouns"  named txt file used in project A
 ```markdown
 your
 i
@@ -900,7 +900,7 @@ yours
 herself
 whoever
 ```
-## "verbs" named txt file used in project A
+### "verbs" named txt file used in project A
 ```markdown
 is
 are
@@ -1234,6 +1234,7 @@ int main () {
 // if the computer time is before sunset time itll say good afternoon
 // if the computer time is after sunset time itll say good evening
 ```
+
 ### Lab 2 (1 out of 2)
 Input a number from 1 - 20, program will request you to re-enter a number if you input wrong number
 after inputing a numbber from 1-20, it will raise 2 to that power
@@ -1416,6 +1417,7 @@ for(int i=0;i<s;i++){
 	cout<<endl;}
 }
 ```
+
 ### Lab3 (3 out of 5)
 Ask for 2 inputs. Then creates a trapeoid with width as a base 
 and growings rows above depending on the your height input.
@@ -1584,6 +1586,7 @@ cin>>k;
 cout<<"C("<<n<<","<<k<<"): "<<finalprod<<endl;
 }
 ```
+
 ### Lab 4 (2 out of 4)
 user inputs two intergers to compute C(n,k)
 Allows the user to compute k <= n/2
@@ -1726,7 +1729,7 @@ cout<<"C("<<n<<","<<k<<"): "<<productb<<endl;
 }
 ```
 
-### Lab 5
+### Lab 5 (1 out of 3)
 This program takes one input, a non negative number. It tells you how many digits long that digit with a function
 ```markdown
 /*
@@ -1762,6 +1765,7 @@ int main(){
 
 ```
 
+### Lab 5 (2 out of 3)
 This program takes one input, a non negative number. It tells you how many digits long that digit with a function
 ```markdown
 /*
@@ -1769,7 +1773,6 @@ Author: Phillip Chen
 Course: {135,136}
 Instructor: <Alex Nikolaev
 Assignment: <Lab 5b
-
 */
 
 # include <iostream>
@@ -1813,6 +1816,7 @@ int main(){
 }
 ```
 
+### Lab 5 (3 out of 3)
 Reads your number to see if it is divisible by 9 and then changes the number to be divisible by 9
 ```markdown
 /*
@@ -1876,7 +1880,8 @@ int main(){
 	}
 }
 ```
-### Lab 7
+
+### Lab 7 (1 out of 6)
 The program reads a PGM image from the file "inImage.pgm",
 and outputs a modified image to "outImage.pgm". 
 Most code are from task 0 (code given),
@@ -1888,6 +1893,7 @@ inserted code at 108-110 so that it outputs an inverse color image given
   Instructor: Alex Vikolaev
   Assignment: Lab 7 Task 1
 */
+
 #include <iostream>
 #include <cassert>
 #include <cstdlib>
@@ -1979,7 +1985,7 @@ int main() {
 }
 
 ```
-
+### Lab 7 (2 out of 6)
 The program reads a PGM image from the file "inImage.pgm" 
 and outputs a modified image to "outImage.pgm"
 Most code from task 0(code given),
@@ -1992,6 +1998,7 @@ left half having its orginal color,and the right half having its color inverted.
   Instructor: Alex Vikolaev
   Assignment: Lab 7 Task 2
 */
+
 #include <iostream>
 #include <cassert>
 #include <cstdlib>
@@ -2089,6 +2096,7 @@ int main() {
 }
 ```
 
+### Lab 7 (3 out of 6)
 The program reads a PGM image from the file "inImage.pgm",
 and outputs a modified image to "outImage.pgm"
 Most code from task 0(code given),
@@ -2194,6 +2202,7 @@ int main() {
 }
 ```
 
+### Lab 7 (4 out of 6)
 The program reads a PGM image from the file "inImage.pgm",
 and outputs a modified image to "outImage.pgm"
 Most code from task 0(code given),
@@ -2312,6 +2321,7 @@ int main() {
 }
 ```
 
+### Lab 7 (5 out of 6)
 The program reads a PGM image from the file "inImage.pgm",
 and outputs a modified image to "outImage.pgm"
 Most code from task 0(code given),
@@ -2423,6 +2433,7 @@ int main() {
 	
 ```
 
+### Lab 7 (6 out of 6)
 The program reads a PGM image from the file "inImage.pgm",
 and outputs a modified image to "outImage.pgm"
 Most code from task 0(code given),
@@ -2537,7 +2548,8 @@ int main() {
 }
 	
 ```
-### Lab 8 
+
+### Lab 8 (1 out of 3)
 The program reads a file and puts it into a structure (type Word) called w.
 Then it outputs the name of the country and its population at 2000.
 ```markdown
@@ -2546,8 +2558,8 @@ Then it outputs the name of the country and its population at 2000.
   Course: 136
   Instructor: Alex Vikolaev
   Assignment: Lab 8 Task 1
-
 */
+
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
@@ -2610,17 +2622,19 @@ void readData(World &world){
 }
 
 ```
+
+### Lab 8 (2 out of 3)
+The program reads a file nad puts it into a structure (type Word) called w.
+It calculates the countries relative growth rate and then
+outputs the maximum and minimum countries in terminal.
 ```markdown
 /*
   Author:Phillip Chen
   Course: 136
   Instructor: Alex Vikolaev
   Assignment: Lab 8 Task 2
-  Description:
-    The program reads a file nad puts it into a structure (type Word) called w.
-    It calculates the countries relative growth rate and then
-    outputs the maximum and minimum countries in terminal.
 */
+
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
@@ -2695,6 +2709,7 @@ void readData(World &world, int &indexmin, int &indexmax){
 }
 ```
 
+### Lab 8 (3 out of 3)
 The program reads a file nad puts it into a structure (type Word) called w.
 It calculates the countries relative growth rate and then
 places the countries with negative relative growth rate in a struct and prints it out 
@@ -2705,6 +2720,7 @@ places the countries with negative relative growth rate in a struct and prints i
   Instructor: Alex Vikolaev
   Assignment: Lab 8 Task 3
 */
+
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
@@ -2789,21 +2805,22 @@ void readData(World &world, int &indexmin, int &indexmax){
 	}
 }
 ```
-### Lab 9
-```markdown
-/*
-Author: Phillip Chen
-Course: 136
-Instructor: Alex Nikolaev
-Assignment: Lab9a
 
+### Lab 9 (1 out of 2)
 This program will store an polynomial and computes its value.
 First it will ask the highest degree in your polynomial ( x^degree ).
 Second it will ask you to input constants next to each coefficent degree 
 ( Each "Number" in "Number x^degree" )  
 Third it will ask you the value of the coefficent ( vaule of x )
 Forth it will compute the vaule of the entire polynomial
+```markdown
+/*
+Author: Phillip Chen
+Course: 136
+Instructor: Alex Nikolaev
+Assignment: Lab9a
 */
+
 #include <iostream>
 #include <cmath>
 using namespace std;
@@ -2868,20 +2885,22 @@ void print(double poly[], int degree){
 	}
 }
 ```
-```markdown
-/*
-Author: Phillip Chen
-Course: 136
-Instructor: Alex Nikolaev
-Assignment: Lab9 Task 2
 
+### Lab 9 (1 out of 2)
 This program will store an polynomial and computes its value.
 First it will ask the highest degree in your polynomial ( x^degree ).
 Second it will ask you to input constants next to each coefficent degree 
 ( Each "Number" in "Number x^degree" )  
 Third it will ask you the value of the coefficent ( vaule of x )
 Forth it will compute the vaule of the entire polynomial
+```markdown
+/*
+Author: Phillip Chen
+Course: 136
+Instructor: Alex Nikolaev
+Assignment: Lab9 Task 2
 */
+
 #include <iostream>
 #include <cmath>
 using namespace std;
@@ -2989,14 +3008,7 @@ void print(double poly[], int degree){
 }
 
 ```
-### Lab 11
-```markdown
-/*
-Author: Phillip Chen
-Course: 136
-Instructor: Alex Nikolaev
-Assignment: Lab11 Task 1
-
+### Lab 11 (1 out of 3)
 This program makes an vector with 1,2,3,4,5,6,7,8,9,10 in it.
 The function gets the sum of the values inside the vector by 
 identifying the last element while removing that element from the vector. 
@@ -3005,7 +3017,14 @@ Once its empty, this is the base case (keeping the function from repeating infin
 so we return a value (in this casue it is zero because we are doing addition and we dont want it
 to affect the end result).
 Then add all the number pulled out of the vector to get our answer
+```markdown
+/*
+Author: Phillip Chen
+Course: 136
+Instructor: Alex Nikolaev
+Assignment: Lab11 Task 1
 */
+
 #include <iostream>
 #include <vector>
 using namespace std;
@@ -3038,13 +3057,8 @@ int sum(vector<int> v){
 		return 0;	
 }	
 ```
-```markdown
-/*
-Author: Phillip Chen
-Course: 136
-Instructor: Alex Nikolaev
-Assignment: Lab11 Task 2
 
+### Lab 11 (2 out of 3)
 This program makes an vector with random numbers in it.
 The function gets maximum value in the vector by comparing the last two elements of the vector.
 First I saved the last element of the vector on to a variable.
@@ -3053,7 +3067,14 @@ Then I removed the last element in the vector and
 if the element removed was a bigger value, replace last spot in the vector.
 if the element remove was a lower value, no change is needed.
 Base case would be when the vector size is only 1 ( the maximum value in the vector ), returns itself.
+```markdown
+/*
+Author: Phillip Chen
+Course: 136
+Instructor: Alex Nikolaev
+Assignment: Lab11 Task 2
 */
+
 #include <iostream>
 #include <vector>
 #include <cstdlib>
@@ -3095,17 +3116,19 @@ int maximum(vector<int> v){
 }
 	
 ```
+
+### Lab 11 (3 out of 3)
+This program takes a string input and decides if it is well-formed or not.
+To be well formed the string has to have pairing symbols of [],{}, and <>.
+For example <{[])> is well formed. <{{]}> is not well formed because {] is not the pairing correctly
 ```markdown
 /*
 Author: Phillip Chen
 Course: 136
 Instructor: Alex Nikolaev
 Assignment: Lab11 Task 3
-
-This program takes a string input and decides if it is well-formed or not.
-To be well formed the string has to have pairing symbols of [],{}, and <>.
-For example <{[])> is well formed. <{{]}> is not well formed because {] is not the pairing correctly
 */
+
 #include <iostream>
 #include <string>
 using namespace std;
