@@ -1,37 +1,138 @@
 ## Welcome to GitHub Pages
 
-You can use the [editor on GitHub](https://github.com/PChen96/PChen96.github.io/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+### Lab1
 
 ```markdown
-Syntax highlighted code block
+/*
+Author: Phillip Chen
+Course: {135,136}
+Instructor: Alexey Nikolaev
+Assignment: Lab 1 - Task B
 
-# Header 1
-## Header 2
-### Header 3
 
-- Bulleted
-- List
+the example uses the time from the computer and compares it to the sunset time you set
+if the computer time is before sunset time itll say good afternoon
+if the computer time is after sunset time itll say good evening
+*/
 
-1. Numbered
-2. List
+#include <iostream>
+#include <ctime>
+using namespace std;
 
-**Bold** and _Italic_ and `Code` text
+int main () {
 
-[Link](url) and ![Image](src)
+	time_t t;
+	struct tm *now;
+	t = time(0);             // get current time                                          
+	now = localtime(&t);     // adjust for local timezone
+	int hour = now->tm_hour; // retrieve current hours
+	int min = now->tm_min;   // retrieve current minutes
+	
+	//input hours when it is sun set
+	cout << "Enter the hours part of today's sunset time (4-9):" <<endl;
+	int sunset_hour = 0;
+	cin >> sunset_hour;
+	sunset_hour = sunset_hour + 12; // add 12 to the variable, you can also do; sunset_hour += 12
+	
+	//input minutes when it is sun set
+	cout << "Enter the minutes part of today's sunset time (0-59):" <<endl;
+	int sunset_min;
+	cin >> sunset_min;
+	
+	//hellos
+	if (hour < 12 ) {
+		cout << "Good Morning" << endl;
+	}
+	else {
+		int total_cur_min = hour * 60 + min ;//converting computer time to minutes
+		int total_sunset_min = sunset_hour * 60 + sunset_min ;//converting set sunset time to minutes
+		//cout << total_cur_min << endl; this is here to help me see behind the scenes what the numbers are
+		//cout << total_sunset_min << endl;
+		
+		if (total_sunset_min > total_cur_min){
+			cout<<"Good Afternoon" <<endl;
+			}
+		else{
+			cout<<"Good Evening"<<endl;
+			
+		}
+	}
+}
+
 ```
+```markdown
+/*
+Author: Phillip Chen
+Course: {135,136}
+Instructor: Alexey Nikolaev
+Assignment: Lab 1 - Task C
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+This program says good morning if the computer time is before noon (12)or
+good afternoon or good evening depending on the time you set for sunset
+it will also calculate when you'll arrive home when you provide commute time
+*/
+#include <iostream>
+#include <ctime>
+using namespace std;
 
+int main () {
+
+	time_t t;
+	struct tm *now;
+	t = time(0);             // get current time                                          
+	now = localtime(&t);     // adjust for local timezone
+	int hour = now->tm_hour; // retrieve current hours
+	int min = now->tm_min;   // retrieve current minutes
+	
+	//input hours when it is sun set
+	cout << "Enter the hours part of today's sunset time (4-9):" <<endl;
+	int sunset_hour = 0;
+	cin >> sunset_hour;
+	sunset_hour = sunset_hour + 12; // add 12 to the variable, you can also do; sunset_hour += 12
+	
+	//input minutes when it is sun set
+	cout << "Enter the minutes part of today's sunset time (0-59):" <<endl;
+	int sunset_min;
+	cin >> sunset_min;
+	
+	//hellos
+	if (hour < 12 ) {
+		cout << "Good Morning" << endl;
+	}
+	else {
+		int total_cur_min = hour * 60 + min ;//converting computer time to minutes
+		int total_sunset_min = sunset_hour * 60 + sunset_min ;//converting set sunset time to minutes
+		if (total_sunset_min > total_cur_min){// if computer time less than sunset time its afternoon
+			cout<<"Good Afternoon" <<endl;//12-sunset time
+			}
+		else{
+			cout<<"Good Evening"<<endl;// else ( means its more ) will be evening, sunset time to midnight
+			
+		}
+	}
+	//part c
+	cout << "How many minutes from now do you expect to be home?"<<endl;
+	int travel_min_hourless = 0; // make a variable to hold minutes after %
+	int travel_min = 0;//variable to hold minutes 
+	int travel_hour = 0;
+	cin >> travel_min;
+	travel_min = travel_min + min;
+	
+	if (travel_min + min > 60){
+		travel_min_hourless = travel_min % 60;/// made sure to save travel_min to different variable to use it for next equation  
+		travel_hour =travel_min / 60;/// these two equation uses same variable 
+		cout << "You will get home at " << hour+travel_hour << ":" << travel_min_hourless << endl;
+
+	}
+	else{
+		cout << "You will get home at " << hour << ":" << travel_min + min << endl;
+	}
+}
+// the example uses the time from the computer and compares it to the sunset time you set
+// if the computer time is before sunset time itll say good afternoon
+// if the computer time is after sunset time itll say good evening
+```
 ### Jekyll Themes
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/PChen96/PChen96.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
 
 ### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
