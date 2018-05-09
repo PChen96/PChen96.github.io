@@ -2,7 +2,11 @@
 ### Csci 127 Project 1
 ```markdown
 ## Csci 127 Project Requires the use of 3 txt files under the project main
-## Csci 127 Project main (1 out of 2)
+## Csci 127 Project main (1 out of 2) - 
+This program ask for you to input a sentence, if the sentence has 5 words or more its illegal.
+The sentence is only legal if you used words provided in the notepads given for this project in a specific order.
+The word type and order is stated in the code 
+This program allows uppercase letters and disregards multiple spaces between words
 ```markdown
 /*
 Author: Phillip Chen
@@ -10,10 +14,6 @@ Course: 135
 Instructor: Alex Nikolaev
 Assignment: Project 1 Task A
 
-This program ask for you to input a sentence, if the sentence has 5 words or more its illegal.
-The sentence is only legal if you used words provided in the notepads given for this project in a specific order.
-The word type and order is stated in the code 
-This program allows uppercase letters and disregards multiple spaces between words
 */
 
 #include <iostream>
@@ -169,14 +169,7 @@ for(int i = 0; i<input.length();i++){		//extract the words in the getline senten
 
 
 ```
-## Csci 127 project main ( 2 out of 2)
-```markdown
-*
-Author: Phillip Chen
-Course: 135
-Instructor: Alex Nikolaev
-Assignment: Project 1 Task A
-
+## Csci 127 project main ( 2 out of 2) 
 This program will read a file called engsents.If the sentences inside has 5 words or more, it's illegal.
 The sentence is only legal if you used words provided in the notepads given for this project in a specific order.
 The word type and order is stated in the code.
@@ -185,6 +178,13 @@ Part B
 This program now saves the cases and prints out the sentences in Elbonian format when sentence is legal.
 verb before the first noun and the 2nd noun/pronoun gets printed inside the adjective after the adjective's first letter.
 The program will write a file called elbsents with the correct sentences, or illegal sentences detected. 
+```markdown
+*
+Author: Phillip Chen
+Course: 135
+Instructor: Alex Nikolaev
+Assignment: Project 1 Task A
+
 */
 
 #include <iostream>
@@ -1103,8 +1103,12 @@ translate
 ```
 ```
 ### endd of project 1
+
 ### Lab1
 
+the example uses the time from the computer and compares it to the sunset time you set
+if the computer time is before sunset time itll say good afternoon
+if the computer time is after sunset time itll say good evening
 ```markdown
 /*
 Author: Phillip Chen
@@ -1112,9 +1116,6 @@ Course: {135,136}
 Instructor: Alexey Nikolaev
 Assignment: Lab 1 - Task B
 
-the example uses the time from the computer and compares it to the sunset time you set
-if the computer time is before sunset time itll say good afternoon
-if the computer time is after sunset time itll say good evening
 */
 
 #include <iostream>
@@ -1162,6 +1163,9 @@ int main () {
 }
 
 ```
+This program says good morning if the computer time is before noon (12)or
+good afternoon or good evening depending on the time you set for sunset
+it will also calculate when you'll arrive home when you provide commute time
 ```markdown
 /*
 Author: Phillip Chen
@@ -1169,9 +1173,6 @@ Course: {135,136}
 Instructor: Alexey Nikolaev
 Assignment: Lab 1 - Task C
 
-This program says good morning if the computer time is before noon (12)or
-good afternoon or good evening depending on the time you set for sunset
-it will also calculate when you'll arrive home when you provide commute time
 */
 
 #include <iostream>
@@ -1236,6 +1237,8 @@ int main () {
 // if the computer time is after sunset time itll say good evening
 ```
 ### Lab 2
+Input a number from 1 - 20, program will request you to re-enter a number if you input wrong number
+after inputing a numbber from 1-20, it will raise 2 to that power
 ```markdown
 /*
 Author: Phillip Chen
@@ -1243,8 +1246,6 @@ Course: {135,136}
 Instructor: <Alex Nikolaev
 Assignment: Lab 2 task A
 
-Input a number from 1 - 20, program will request you to re-enter a number if you input wrong number
-after inputing a numbber from 1-20, it will raise 2 to that power
 */
 
 #include <iostream>
@@ -1271,6 +1272,8 @@ int main()
 		
 ```
 
+Using the verhulst Formula. After entering number, decimal, decimal, number, number.
+The loop function will give you the population for each year
 ```markdown
 /*
 Author: Phillip Chen
@@ -1278,8 +1281,7 @@ Course: {135,136}
 Instructor: <Alex Nikolaev
 Assignment: Lab 2 task B
 
-Using the verhulst Formula. After entering number, decimal, decimal, number, number.
-The loop function will give you the population for each year
+
 */
 
 #include <iostream>
@@ -1338,7 +1340,10 @@ int main()
 	
 }
 ```
+
 ### Lab3
+Input 2 numbers for height and weight. The program will then use loop code to print out a 
+hallow rectangle based on the measurements you input.
 ```markdown
 /*
 Author: Phillip Chen
@@ -1346,8 +1351,7 @@ Course: {135,136}
 Instructor: <Alex Nikolaev
 Assignment: Lab 3 task A
 
-Input 2 numbers for height and weight. The program will then use loop code to print out a 
-hallow rectangle based on the measurements you input.
+
 */
 #include <iostream>
 using namespace std;
@@ -1388,6 +1392,7 @@ cout<<endl;
 
 ```
 
+Ask for 1 input. Then prints out a right triangle with input as height
 ```markdown
 /*
 Author: Phillip Chen
@@ -1395,7 +1400,7 @@ Course: {135,136}
 Instructor: <Alex Nikolaev
 Assignment: Lab 3 task B
 
-Ask for 1 input. Then prints out a right triangle with input as height
+
 */
 
 #include <iostream>
@@ -1415,6 +1420,8 @@ for(int i=0;i<s;i++){
 }
 ```
 
+Ask for 2 inputs. Then creates a trapeoid with width as a base 
+and growings rows above depending on the your height input.
 ```markdown
 /*
 Author: Phillip Chen
@@ -1422,8 +1429,6 @@ Course: {135,136}
 Instructor: <Alex Nikolaev
 Assignment: Lab 3 task c
 
-Ask for 2 inputs. Then creates a trapeoid with width as a base 
-and growings rows above depending on the your height input.
 */
 
 #include <iostream>
@@ -1452,6 +1457,8 @@ for(int i=0; i<h;i++){				//sets the boundary of how many rows
 }
 ```
 
+Ask for 1 input and outputs a right triangle with it's right located at the top right
+of print screen
 ```markdown
 /*
 Author: Phillip Chen
@@ -1459,8 +1466,6 @@ Course: {135,136}
 Instructor: <Alex Nikolaev
 Assignment: Lab 3 task d
 
-Ask for 1 input and outputs a right triangle with it's right located at the top right
-of print screen
 */
 
 #include <iostream>
@@ -1484,12 +1489,6 @@ for (int i=0; i<s;i++){			//how many rows repeated
 }
 ```
 
-```markdowm
-/*
-Author: Phillip Chen
-Course: {135,136}
-Instructor: <Alex Nikolaev
-Assignment: Lab 3 task e
 
 Ask for one input (diameter). Using the circle formula. if you subtract
 the center point with the x and y axis you will get negative numbers
@@ -1497,6 +1496,13 @@ but that wouldnt matter because the circle formula square these numbers
 making them positive; x*x + y*y < r*r
 the code says greater than because that line put in the empty spaces
 outside of the circle
+```markdowm
+/*
+Author: Phillip Chen
+Course: {135,136}
+Instructor: <Alex Nikolaev
+Assignment: Lab 3 task e
+
 */
 
 #include <iostream>
@@ -1530,7 +1536,10 @@ for(double y=0; y<d;y++){
 }
 			
 ```
+
 ### Lab 4
+Input two integars to computer C(n,k)
+overflows at C(13,1)
 ```markdown
 /*
 Author: Phillip Chen
@@ -1538,8 +1547,6 @@ Course: {135,136}
 Instructor: <Alex Nikolaev
 Assignment: Lab 4 task A
 
-Input two integars to computer C(n,k)
-overflows at C(13,1)
 */
 #include <iostream>
 using namespace std;
@@ -1580,6 +1587,9 @@ cout<<"C("<<n<<","<<k<<"): "<<finalprod<<endl;
 }
 ```
 
+user inputs two intergers to compute C(n,k)
+Allows the user to compute k <= n/2
+if you attemp to plug in a k >n/2 you'll get the wrong answer
 ```markdown
 /*
 Author: Phillip Chen
@@ -1587,9 +1597,6 @@ Course: {135,136}
 Instructor: <Alex Nikolaev
 Assignment: Lab 4 task B
 
-user inputs two intergers to compute C(n,k)
-Allows the user to compute k <= n/2
-if you attemp to plug in a k >n/2 you'll get the wrong answer
 */
 #include <iostream>
 using namespace std;
@@ -1626,6 +1633,9 @@ cout<<"C("<<n<<","<<k<<"): "<<finalprod<<endl;
 }
 ```
 
+user inputs two intergers to compute C(n,k)
+Allows the user to compute k <= n/2
+if you attemp to plug in a k >n/2 you'll get the wrong answer
 ```markdown
 /*
 Author: Phillip Chen
@@ -1633,8 +1643,6 @@ Course: {135,136}
 Instructor: <Alex Nikolaev
 Assignment: Lab 4 task C
 
-user inputs two intergers to compute C(n,k)
-Allows the user to compute k<= n/2 and k >n/2
 */
 #include <iostream>
 using namespace std;
@@ -1682,6 +1690,9 @@ finalprod = producta/productb;
 cout<<"C("<<n<<","<<k<<"): "<<finalprod<<endl;
 }
 ```
+
+Input two integars to compute C(n,k)
+this program can compute larger values of n and k
 ```markdown
 /*
 Author: Phillip Chen
@@ -1689,8 +1700,6 @@ Course: {135,136}
 Instructor: <Alex Nikolaev
 Assignment: Lab 4 task D
 
-Input two integars to compute C(n,k)
-this program can compute larger values of n and k
 */
 #include <iostream>
 using namespace std;
@@ -1718,14 +1727,13 @@ cout<<"C("<<n<<","<<k<<"): "<<productb<<endl;
 }
 ```
 ### Lab 5
+This program takes one input, a non negative number. It tells you how many digits long that digit with a function
 ```markdown
 /*
 Author: Phillip Chen
 Course: {135,136}
 Instructor: <Alex Nikolaev
 Assignment: <Lab 5a
-
-This program takes one input, a non negative number. It tells you how many digits long that digit with a function
 */
 
 # include <iostream>
@@ -1753,6 +1761,8 @@ int main(){
 }
 
 ```
+
+This program takes one input, a non negative number. It tells you how many digits long that digit with a function
 ```markdown
 /*
 Author: Phillip Chen
@@ -1760,7 +1770,6 @@ Course: {135,136}
 Instructor: <Alex Nikolaev
 Assignment: <Lab 5b
 
-This program takes one input, a non negative number. It tells you how many digits long that digit with a function
 */
 
 # include <iostream>
@@ -1803,14 +1812,14 @@ int main(){
 
 }
 ```
+
+Reads your number to see if it is divisible by 9 and then changes the number to be divisible by 9
 ```markdown
 /*
 Author: Phillip Chen
 Course: {135,136}
 Instructor: <Alex Nikolaev
 Assignment: <Lab 5b repeating
-
-Reads your number to see if it is divisible by 9 and then changes the number to be divisible by 9
 */
 
 # include <iostream>
@@ -1867,20 +1876,17 @@ int main(){
 	}
 }
 ```
-### Lab 6 was a debug lab
 ### Lab 7
+The program reads a PGM image from the file "inImage.pgm",
+and outputs a modified image to "outImage.pgm". 
+Most code are from task 0 (code given),
+inserted code at 108-110 so that it outputs an inverse color image given
 ```markdown
 /*
   Author:Phillip Chen
   Course: 136
   Instructor: Alex Vikolaev
   Assignment: Lab 7 Task 1
-  Description:
-  
-    The program reads a PGM image from the file "inImage.pgm",
-    and outputs a modified image to "outImage.pgm". 
-    Most code are from task 0 (code given),
-    inserted code at 108-110 so that it outputs an inverse color image given
 */
 #include <iostream>
 #include <cassert>
@@ -1974,18 +1980,17 @@ int main() {
 
 ```
 
+The program reads a PGM image from the file "inImage.pgm" 
+and outputs a modified image to "outImage.pgm"
+Most code from task 0(code given),
+The code splits the image in half by outputing a picture with
+left half having its orginal color,and the right half having its color inverted.
 ```markdown
 /*
   Author:Phillip Chen
   Course: 136
   Instructor: Alex Vikolaev
   Assignment: Lab 7 Task 2
-  Description:
-    The program reads a PGM image from the file "inImage.pgm" 
-    and outputs a modified image to "outImage.pgm"
-    Most code from task 0(code given),
-    The code splits the image in half by outputing a picture with
-    left half having its orginal color,and the right half having its color inverted.
 */
 #include <iostream>
 #include <cassert>
@@ -2083,17 +2088,17 @@ int main() {
 	writeImage(out, w, h);
 }
 ```
+
+The program reads a PGM image from the file "inImage.pgm",
+and outputs a modified image to "outImage.pgm"
+Most code from task 0(code given),
+Outputs a picture with a filled in white square at the center of the picture
 ```markdown
 /*
   Author:Phillip Chen
   Course: 136
   Instructor: Alex Vikolaev
   Assignment: Lab 7 Task 3
-  Description:
-    The program reads a PGM image from the file "inImage.pgm",
-    and outputs a modified image to "outImage.pgm"
-    Most code from task 0(code given),
-    Outputs a picture with a filled in white square at the center of the picture
 */
 
 #include <iostream>
@@ -2188,17 +2193,17 @@ int main() {
 	writeImage(out, w, h);
 }
 ```
+
+The program reads a PGM image from the file "inImage.pgm",
+and outputs a modified image to "outImage.pgm"
+Most code from task 0(code given),
+Outputs a picture with a thin white border square at the center of the picture
 ```markdown
 /*
   Author:Phillip Chen
   Course: 136
   Instructor: Alex Vikolaev
   Assignment: Lab 7 Task 4
-  Description:
-    The program reads a PGM image from the file "inImage.pgm",
-    and outputs a modified image to "outImage.pgm"
-    Most code from task 0(code given),
-    Outputs a picture with a thin white border square at the center of the picture
 */
 
 #include <iostream>
@@ -2306,17 +2311,17 @@ int main() {
 	writeImage(out, w, h);
 }
 ```
+
+The program reads a PGM image from the file "inImage.pgm",
+and outputs a modified image to "outImage.pgm"
+Most code from task 0(code given),
+Outputs a picture twice the size of its original picture
 ```markdown
 /*
   Author:Phillip Chen
   Course: 136
   Instructor: Alex Vikolaev
   Assignment: Lab 7 Task 5
-  Description:
-    The program reads a PGM image from the file "inImage.pgm",
-    and outputs a modified image to "outImage.pgm"
-    Most code from task 0(code given),
-    Outputs a picture twice the size of its original picture
 */
 
 #include <iostream>
@@ -2417,18 +2422,18 @@ int main() {
 }
 	
 ```
+
+The program reads a PGM image from the file "inImage.pgm",
+and outputs a modified image to "outImage.pgm"
+Most code from task 0(code given),
+Outputs a picture that is pixelated by
+adveraging values in each "2x2 pixels" and giving each pixel in the "2x2 pixels" its adverage
 ```markdown
 /*
   Author:Phillip Chen
   Course: 136
   Instructor: Alex Vikolaev
   Assignment: Lab 7 Task 6
-  Description:
-    The program reads a PGM image from the file "inImage.pgm",
-    and outputs a modified image to "outImage.pgm"
-    Most code from task 0(code given),
-    Outputs a picture that is pixelated by
-    adveraging values in each "2x2 pixels" and giving each pixel in the "2x2 pixels" its adverage
 */
 
 #include <iostream>
@@ -2533,15 +2538,15 @@ int main() {
 	
 ```
 ### Lab 8 
+The program reads a file and puts it into a structure (type Word) called w.
+Then it outputs the name of the country and its population at 2000.
 ```markdown
 /*
   Author:Phillip Chen
   Course: 136
   Instructor: Alex Vikolaev
   Assignment: Lab 8 Task 1
-  Description:
-    The program reads a file and puts it into a structure (type Word) called w.
-    Then it outputs the name of the country and its population at 2000.
+
 */
 #include <iostream>
 #include <fstream>
@@ -2689,16 +2694,16 @@ void readData(World &world, int &indexmin, int &indexmax){
 	}
 }
 ```
+
+The program reads a file nad puts it into a structure (type Word) called w.
+It calculates the countries relative growth rate and then
+places the countries with negative relative growth rate in a struct and prints it out 
 ```markdown
 /*
   Author:Phillip Chen
   Course: 136
   Instructor: Alex Vikolaev
   Assignment: Lab 8 Task 3
-  Description:
-    The program reads a file nad puts it into a structure (type Word) called w.
-   	It calculates the countries relative growth rate and then
-   	places the countries with negative relative growth rate in a struct and prints it out 
 */
 #include <iostream>
 #include <fstream>
