@@ -1,7 +1,5 @@
 ## Welcome to Phillip Syntax Pages
-### Csci 127 Project 1
-```markdown
-
+### Csci 127 
 ## Csci 127 Project Requires the use of 3 txt files under the project main
 ## Csci 127 Project main (1 out of 2) - 
 This program ask for you to input a sentence, if the sentence has 5 words or more its illegal.
@@ -167,8 +165,6 @@ for(int i = 0; i<input.length();i++){		//extract the words in the getline senten
 	if(fail ==0){cout<<"Your sentence is not a legal sentence"<<endl;}
 	}
 
-
-```
 ### Csci 127 project main (2 out of 2) 
 This program will read a file called engsents.If the sentences inside has 5 words or more, it's illegal.
 The sentence is only legal if you used words provided in the notepads given for this project in a specific order.
