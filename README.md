@@ -1,5 +1,1108 @@
-## Welcome to GitHub Pages
+## Welcome to Phillip Syntax Pages
+### Csci 127 Project 1
+```markdown
+## Csci 127 Project Requires the use of 3 txt files under the project main
+## Csci 127 Project main (1 out of 2)
+```markdown
+/*
+Author: Phillip Chen
+Course: 135
+Instructor: Alex Nikolaev
+Assignment: Project 1 Task A
 
+This program ask for you to input a sentence, if the sentence has 5 words or more its illegal.
+The sentence is only legal if you used words provided in the notepads given for this project in a specific order.
+The word type and order is stated in the code 
+This program allows uppercase letters and disregards multiple spaces between words
+*/
+
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+
+int main(){
+string input;
+cout<<"Please enter a setence: ";
+getline (cin,input);
+
+for(int i = 0;i<input.length();i++){	//converts sentence to lower case
+	if (64<input[i] && input[i]<97){
+		input[i]=input[i]+32;
+		}
+	}
+	
+string w1;		//strings to store the words 
+string w2;
+string w3;
+string w4;
+string w5; 		//if there is an extra word(s) then the sentence is illegal
+						
+int empty1 =0;	//empty(#) are counters for spaces in between sentences
+int empty2 =0;
+int empty3 =0;
+int empty4 =0;
+
+for(int i = 0; i<input.length();i++){		//extract the words in the getline sentence
+											//(32 = space, 9 = horizontal tab , 11 = vertical tab)
+											//activates counter when muliple spaces bewteen words	
+	if((input[i] == 32 || input[i] ==9 || input[i] == 11) && (input[i+1] == 32 || input[i+1] ==9 || input[i+1] == 11 ) &!(w4.empty()))//multiple spaces after fourth word
+		{empty4++;}	
+	
+	if((input[i] == 32 || input[i] ==9 || input[i] == 11) && (input[i+1] == 32 || input[i+1] ==9 || input[i+1] == 11 ) &!(w3.empty()))//multiple spaces after third word
+		{empty3++;}
+		
+	if((input[i] == 32 || input[i] ==9 || input[i] == 11) && (input[i+1] == 32 || input[i+1] ==9 || input[i+1] == 11 ) &!(w4.empty()))//multiple spaces after second word
+		{empty2++;}
+		
+	if((input[i] == 32 || input[i] ==9 || input[i] == 11) && (input[i+1] == 32 || input[i+1] ==9 || input[i+1] == 11 ))//multiple spaces after first word
+		{empty1++;}
+		
+	//these "if loops" are to catch single space or spaces before the words
+	if((input[i] == 32 || input[i] ==9 || input[i] == 11)//single or the last of "muliple spaces" after fourth word  
+			&!(w4.empty()))
+		{empty4++;}	
+	
+	if((input[i] == 32 || input[i] ==9 || input[i] == 11)//single or the last of "muliple spaces" after third word 
+			&!(w3.empty()))
+		{empty3++;}
+		
+	if((input[i] == 32 || input[i] ==9 || input[i] == 11)//single or the last of "muliple spaces" after second word 
+			&!(w2.empty()))
+		{empty2++;}
+		
+	if((input[i] == 32 || input[i] ==9 || input[i] == 11))//single or the last of "muliple spaces" after first word 
+		{empty1++;}
+		
+	// these "if loops" are to store the words
+	if((input[i] != 32 && input[i] !=9 && input[i] != 11 ) && empty4 !=0)//stores rest of the letters after fourth word in w5
+		{w5= w5+input[i];}
+
+	if((input[i] != 32 && input[i] !=9 && input[i] != 11 ) && empty4==0 && empty3 !=0)//stores fourth word in w4
+		{w4= w4+input[i];}
+		
+	if((input[i] != 32 && input[i] !=9 && input[i] != 11 ) && empty3==0 && empty2 !=0 )//stores third word in w3
+		{w3= w3+input[i];}
+
+	if((input[i] != 32 && input[i] !=9 && input[i] != 11 ) && empty2 ==0 && empty1 !=0)//stores second word in w2
+		{w2= w2+input[i];}
+
+	if((input[i] != 32 && input[i] !=9 && input[i] != 11 ) && empty1==0 )//stores first word in w1
+		{w1= w1+input[i];}
+	}
+
+/*	legal sentences - since order matters, some words dont need to be compared 
+	to know if the sentence is legal; noun w1,w3,w4| pronoun w1,w3| verb w2| adj w3 
+    <sentence> = <noun>		<verb>	<noun>
+    <sentence> = <noun>		<verb>	<adjective>	<noun>
+    <sentence> = <pronoun>	<verb>	<noun>
+    <sentence> = <pronoun>	<verb>	<adjective>	<noun>
+    <sentence> = <pronoun>	<verb>	<pronoun>
+*/
+	string notepad;
+	ifstream MyFileInput;	
+	//checks if w1,w3,w4 is in noun vocabulary
+	MyFileInput.open("nouns"); 	//open and close files to reset the searching process to the top
+	int counterw1noun = 0;		//counters to indicate if the word was found in the 4 list of words
+	int counterw3noun = 0;
+	int counterw4noun = 0;
+	while(getline(MyFileInput,notepad)){
+		if(w1==notepad){counterw1noun++;}
+	}
+	MyFileInput.close();
+	MyFileInput.open("nouns");
+	while(getline(MyFileInput,notepad)){
+		if(w3==notepad){counterw3noun++;}
+	}
+	MyFileInput.close();
+	MyFileInput.open("nouns");
+	while(getline(MyFileInput,notepad)){
+		if(w4==notepad){counterw4noun++;}
+	}
+	MyFileInput.close();
+
+	//checks if w1,w3 words is in pronoun vocabulary
+	MyFileInput.open("pronouns");
+	int counterw1pro = 0;
+	int counterw3pro = 0;
+	while(getline(MyFileInput,notepad)){
+		if(w1==notepad){counterw1pro++;}
+	}
+	MyFileInput.close();
+	MyFileInput.open("pronouns");
+	while(getline(MyFileInput,notepad)){
+		if(w3==notepad){counterw3pro++;}
+	}
+	MyFileInput.close();
+	
+	//checks if w2 is in verb vocabulary
+	MyFileInput.open("verbs");
+	int counterw2verb = 0;
+	while(getline(MyFileInput,notepad)){
+		if(w2==notepad){counterw2verb++;}
+	}
+	MyFileInput.close();
+
+	//checks if w3 is in adj vocabulary
+	MyFileInput.open("adjectives");
+	int counterw3adj = 0;
+	while(getline(MyFileInput,notepad)){
+		if(w3==notepad){counterw3adj++;}
+	}
+	MyFileInput.close();
+	
+	//displays results of success
+	int fail = 0;	//counter will determine if sentence structure is wrong,by default it will show not legal but if 
+					//the input sentence is found legal, then the counter will increase and the not legal statement will not display
+	if(counterw1noun !=0 && counterw2verb !=0 && counterw3noun !=0 && w4.empty() && w5.empty())
+		{fail++;cout<<"Your sentence is a legal sentence by rule {1}"<<endl;}
+	if(counterw1noun !=0 && counterw2verb !=0 && counterw3adj !=0 && counterw4noun !=0 && w5.empty())
+		{fail++;cout<<"Your sentence is a legal sentence by rule {2}"<<endl;}
+	if(counterw1pro !=0 && counterw2verb !=0 && counterw3noun !=0 && w4.empty() && w5.empty())
+		{fail++;cout<<"Your sentence is a legal sentence by rule {3}"<<endl;}
+	if(counterw1pro !=0 && counterw2verb !=0 && counterw3adj !=0 && counterw4noun !=0 && w5.empty())
+		{fail++;cout<<"Your sentence is a legal sentence by rule {4}"<<endl;}
+	if(counterw1pro !=0 && counterw2verb !=0 && counterw3pro !=0 && w4.empty() && w5.empty())
+		{fail++;cout<<"Your sentence is a legal sentence by rule {5}"<<endl;}
+	if(fail ==0){cout<<"Your sentence is not a legal sentence"<<endl;}
+	}
+
+
+```
+## Csci 127 project main ( 2 out of 2)
+```markdown
+*
+Author: Phillip Chen
+Course: 135
+Instructor: Alex Nikolaev
+Assignment: Project 1 Task A
+
+This program will read a file called engsents.If the sentences inside has 5 words or more, it's illegal.
+The sentence is only legal if you used words provided in the notepads given for this project in a specific order.
+The word type and order is stated in the code.
+This program allows uppercase letters and disregards multiple spaces between words.
+Part B
+This program now saves the cases and prints out the sentences in Elbonian format when sentence is legal.
+verb before the first noun and the 2nd noun/pronoun gets printed inside the adjective after the adjective's first letter.
+The program will write a file called elbsents with the correct sentences, or illegal sentences detected. 
+*/
+
+#include <iostream>
+#include <fstream>
+using namespace std;
+string lowercase(string input); 
+
+int main(){		
+
+string input;
+ofstream writeb;
+writeb.open("elbsents");
+
+ifstream partb;
+partb.open("engsents");
+while (getline(partb,input)){ 
+
+/*
+string input;
+cout<<"Please enter a setence: ";
+getline (cin,input);
+*/
+string w1;		//strings to store the words 
+string w2;
+string w3;
+string w4;
+string w5; 		//if there is an extra word(s) then the sentence is illegal
+						
+int empty1 =0;	//empty(#) are counters for spaces in between sentences
+int empty2 =0;
+int empty3 =0;
+int empty4 =0;
+
+for(int i = 0; i<input.length();i++){		//extract the words in the getline sentence
+											//(32 = space, 9 = horizontal tab , 11 = vertical tab)
+											//activates counter when muliple spaces bewteen words	
+	if((input[i] == 32 || input[i] ==9 || input[i] == 11) && (input[i+1] == 32 || input[i+1] ==9 || input[i+1] == 11 ) &!(w4.empty()))//multiple spaces after fourth word
+		{empty4++;}	
+	
+	if((input[i] == 32 || input[i] ==9 || input[i] == 11) && (input[i+1] == 32 || input[i+1] ==9 || input[i+1] == 11 ) &!(w3.empty()))//multiple spaces after third word
+		{empty3++;}
+		
+	if((input[i] == 32 || input[i] ==9 || input[i] == 11) && (input[i+1] == 32 || input[i+1] ==9 || input[i+1] == 11 ) &!(w4.empty()))//multiple spaces after second word
+		{empty2++;}
+		
+	if((input[i] == 32 || input[i] ==9 || input[i] == 11) && (input[i+1] == 32 || input[i+1] ==9 || input[i+1] == 11 ))//multiple spaces after first word
+		{empty1++;}
+		
+	//these "if loops" are to catch single space or spaces before the words
+	if((input[i] == 32 || input[i] ==9 || input[i] == 11)//single or the last of "muliple spaces" after fourth word  
+			&!(w4.empty()))
+		{empty4++;}	
+	
+	if((input[i] == 32 || input[i] ==9 || input[i] == 11)//single or the last of "muliple spaces" after third word 
+			&!(w3.empty()))
+		{empty3++;}
+		
+	if((input[i] == 32 || input[i] ==9 || input[i] == 11)//single or the last of "muliple spaces" after second word 
+			&!(w2.empty()))
+		{empty2++;}
+		
+	if((input[i] == 32 || input[i] ==9 || input[i] == 11))//single or the last of "muliple spaces" after first word 
+		{empty1++;}
+		
+	// these "if loops" are to store the words
+	if((input[i] != 32 && input[i] !=9 && input[i] != 11 ) && empty4 !=0)//stores rest of the letters after fourth word in w5
+		{w5= w5+input[i];}
+
+	if((input[i] != 32 && input[i] !=9 && input[i] != 11 ) && empty4==0 && empty3 !=0)//stores fourth word in w4
+		{w4= w4+input[i];}
+		
+	if((input[i] != 32 && input[i] !=9 && input[i] != 11 ) && empty3==0 && empty2 !=0 )//stores third word in w3
+		{w3= w3+input[i];}
+
+	if((input[i] != 32 && input[i] !=9 && input[i] != 11 ) && empty2 ==0 && empty1 !=0)//stores second word in w2
+		{w2= w2+input[i];}
+
+	if((input[i] != 32 && input[i] !=9 && input[i] != 11 ) && empty1==0 )//stores first word in w1
+		{w1= w1+input[i];}
+	}
+	string o1=w1;//saves the original casing for part B on o1,o2,o3,o4
+	string o2=w2;
+	string o3=w3;
+	string o4=w4;
+
+	for (int i = 0;i<w1.length();i++){	//converts sentence to lower case
+		if (64<w1[i] && w1[i]<97)
+		{w1[i]=w1[i]+32;}}
+
+	for (int i = 0;i<w2.length();i++){	//converts sentence to lower case
+		if (64<w2[i] && w2[i]<97)
+		{w2[i]=w2[i]+32;}}
+		
+	for (int i = 0;i<w3.length();i++){	//converts sentence to lower case
+		if (64<w3[i] && w3[i]<97)
+		{w3[i]=w3[i]+32;}}
+			
+	for (int i = 0;i<w4.length();i++){	//converts sentence to lower case
+		if (64<w4[i] && w4[i]<97)
+		{w4[i]=w4[i]+32;}}
+		
+/*	legal sentences - since order matters, some words dont need to be compared 
+	to know if the sentence is legal; noun w1,w3,w4| pronoun w1,w3| verb w2| adj w3 
+    <sentence> = <noun>		<verb>	<noun>
+    <sentence> = <noun>		<verb>	<adjective>	<noun>
+    <sentence> = <pronoun>	<verb>	<noun>
+    <sentence> = <pronoun>	<verb>	<adjective>	<noun>
+    <sentence> = <pronoun>	<verb>	<pronoun>
+*/
+	ifstream MyFileInput;
+	string notepad;	
+	//checks if w1,w3,w4 is in noun vocabulary
+	MyFileInput.open("nouns"); 	//open and close files to reset the searching process to the top
+	int counterw1noun = 0;		//counters to indicate if the word was found in the 4 list of words
+	int counterw3noun = 0;
+	int counterw4noun = 0;
+	while(getline(MyFileInput,notepad)){
+		if(w1==notepad){counterw1noun++;}
+	}
+	MyFileInput.close();
+	MyFileInput.open("nouns");
+	while(getline(MyFileInput,notepad)){
+		if(w3==notepad){counterw3noun++;}
+	}
+	MyFileInput.close();
+	MyFileInput.open("nouns");
+	while(getline(MyFileInput,notepad)){
+		if(w4==notepad){counterw4noun++;}
+	}
+	MyFileInput.close();
+
+	//checks if w1,w3 words is in pronoun vocabulary
+	MyFileInput.open("pronouns");
+	int counterw1pro = 0;
+	int counterw3pro = 0;
+	while(getline(MyFileInput,notepad)){
+		if(w1==notepad){counterw1pro++;}
+	}
+	MyFileInput.close();
+	MyFileInput.open("pronouns");
+	while(getline(MyFileInput,notepad)){
+		if(w3==notepad){counterw3pro++;}
+	}
+	MyFileInput.close();
+	
+	//checks if w2 is in verb vocabulary
+	MyFileInput.open("verbs");
+	int counterw2verb = 0;
+	while(getline(MyFileInput,notepad)){
+		if(w2==notepad){counterw2verb++;}
+	}
+	MyFileInput.close();
+
+	//checks if w3 is in adj vocabulary
+	MyFileInput.open("adjectives");
+	int counterw3adj = 0;
+	while(getline(MyFileInput,notepad)){
+		if(w3==notepad){counterw3adj++;}
+	}
+	MyFileInput.close();
+	
+	//displays results of success
+	
+	int fail = 0;	//counter will determine if sentence structure is wrong,by default it will show not legal but if 
+					//the input sentence is found legal, then the counter will increase and the not legal statement will not display
+	if(counterw1noun !=0 && counterw2verb !=0 && counterw3noun !=0 && w4.empty() && w5.empty())
+		{fail++;writeb<<o2<<" "<<o1<<" "<<o3<<" "<<endl;}
+		
+	if(counterw1noun !=0 && counterw2verb !=0 && counterw3adj !=0 && counterw4noun !=0 && w5.empty())
+		{fail++; 
+		char firstletter=o3[0]; 
+		string o3body;
+		for(int i = 0; i<o3.length()-1;i++)
+		{o3body=o3body+o3[i+1];}		
+		writeb<<o2<<" "<<o1<<" "<<firstletter<<o4<<o3body<<endl;}
+	if(counterw1pro !=0 && counterw2verb !=0 && counterw3noun !=0 && w4.empty() && w5.empty())
+		{fail++;writeb<<o2<<" "<<o1<<" "<<o3<<endl;}
+		
+	if(counterw1pro !=0 && counterw2verb !=0 && counterw3adj !=0 && counterw4noun !=0 && w5.empty())
+		{fail++;
+		char firstletter=o3[0]; 
+		string o3body;
+		for(int i = 0; i<o3.length()-1;i++)
+		{o3body=o3body+o3[i+1];}		
+		writeb<<o2<<" "<<o1<<" "<<firstletter<<o4<<o3body<<endl;}	
+	if(counterw1pro !=0 && counterw2verb !=0 && counterw3pro !=0 && w4.empty() && w5.empty())
+		{fail++;writeb<<o2<<" "<<o1<<o3<<endl;}
+	if(fail ==0){writeb<<"Illegal sentence found"<<endl;}
+		
+	}writeb.close();
+}
+
+```
+## nouns used
+```markdown
+people
+history
+way
+art
+world
+information
+map
+two
+family
+government
+health
+system
+computer
+meat
+year
+thanks
+music
+person
+reading
+method
+data
+food
+understanding
+theory
+law
+bird
+literature
+problem
+software
+control
+knowledge
+power
+ability
+economics
+love
+internet
+television
+science
+library
+nature
+fact
+product
+idea
+temperature
+investment
+area
+society
+activity
+story
+industry
+media
+thing
+oven
+community
+definition
+safety
+quality
+development
+language
+management
+player
+variety
+video
+week
+security
+country
+exam
+movie
+organization
+equipment
+physics
+analysis
+policy
+series
+thought
+basis
+boyfriend
+direction
+strategy
+technology
+army
+camera
+freedom
+paper
+environment
+child
+instance
+month
+truth
+marketing
+university
+writing
+article
+department
+difference
+goal
+news
+audience
+fishing
+growth
+income
+marriage
+user
+combination
+failure
+meaning
+medicine
+philosophy
+teacher
+communication
+night
+chemistry
+disease
+disk
+energy
+nation
+road
+role
+soup
+advertising
+location
+success
+addition
+apartment
+education
+math
+moment
+painting
+politics
+attention
+decision
+event
+property
+shopping
+student
+wood
+competition
+distribution
+entertainment
+office
+population
+president
+unit
+category
+cigarette
+context
+introduction
+opportunity
+performance
+driver
+flight
+length
+magazine
+newspaper
+relationship
+teaching
+cell
+dealer
+finding
+lake
+member
+message
+phone
+scene
+appearance
+association
+concept
+customer
+death
+discussion
+housing
+inflation
+insurance
+mood
+woman
+advice
+blood
+effort
+expression
+importance
+opinion
+payment
+reality
+responsibility
+situation
+skill
+statement
+wealth
+application
+city
+county
+depth
+estate
+foundation
+grandmother
+heart
+perspective
+photo
+recipe
+studio
+topic
+collection
+depression
+imagination
+passion
+percentage
+resource
+setting
+ad
+agency
+college
+connection
+criticism
+debt
+description
+memory
+patience
+secretary
+solution
+administration
+aspect
+attitude
+director
+personality
+psychology
+recommendation
+response
+selection
+storage
+version
+alcohol
+argument
+complaint
+contract
+emphasis
+highway
+loss
+membership
+possession
+preparation
+steak
+union
+agreement
+cancer
+currency
+employment
+engineering
+entry
+interaction
+mixture
+preference
+region
+republic
+tradition
+virus
+actor
+classroom
+delivery
+device
+difficulty
+drama
+election
+engine
+football
+guidance
+hotel
+owner
+priority
+protection
+suggestion
+tension
+variation
+anxiety
+atmosphere
+awareness
+bath
+bread
+candidate
+climate
+comparison
+confusion
+construction
+elevator
+emotion
+employee
+employer
+guest
+height
+leadership
+mall
+manager
+operation
+recording
+sample
+transportation
+charity
+cousin
+disaster
+editor
+efficiency
+excitement
+extent
+feedback
+guitar
+homework
+leader
+mom
+outcome
+permission
+presentation
+promotion
+reflection
+refrigerator
+resolution
+revenue
+session
+singer
+tennis
+basket
+bonus
+cabinet
+childhood
+church
+clothes
+coffee
+dinner
+drawing
+hair
+hearing
+initiative
+judgment
+lab
+measurement
+mode
+mud
+orange
+poetry
+police
+possibility
+procedure
+queen
+ratio
+relation
+restaurant
+satisfaction
+sector
+signature
+significance
+song
+tooth
+town
+vehicle
+volume
+wife
+accident
+airport
+appointment
+arrival
+assumption
+baseball
+chapter
+committee
+conversation
+database
+enthusiasm
+error
+explanation
+farmer
+gate
+girl
+hall
+historian
+hospital
+injury
+instruction
+maintenance
+manufacturer
+meal
+perception
+pie
+poem
+presence
+proposal
+reception
+replacement
+revolution
+river
+son
+speech
+tea
+village
+warning
+winner
+worker
+writer
+assistance
+breath
+buyer
+chest
+chocolate
+conclusion
+contribution
+cookie
+courage
+dad
+desk
+drawer
+establishment
+examination
+garbage
+grocery
+honey
+impression
+improvement
+independence
+insect
+inspection
+inspector
+king
+ladder
+menu
+penalty
+piano
+potato
+profession
+professor
+quantity
+reaction
+requirement
+salad
+sister
+supermarket
+tongue
+weakness
+wedding
+affair
+ambition
+analyst
+apple
+assignment
+assistant
+bathroom
+bedroom
+beer
+birthday
+celebration
+championship
+cheek
+client
+consequence
+departure
+diamond
+dirt
+ear
+fortune
+friendship
+funeral
+gene
+girlfriend
+hat
+indication
+intention
+lady
+midnight
+negotiation
+obligation
+passenger
+pizza
+platform
+poet
+pollution
+recognition
+reputation
+shirt
+sir
+speaker
+stranger
+surgery
+sympathy
+tale
+throat
+trainer
+uncle
+youth
+```
+## pronouns used
+```markdown
+your
+i
+they
+their
+we
+who
+them
+its
+our
+my
+those
+he
+us
+her
+something
+me
+yourself
+someone
+everything
+itself
+everyone
+themselves
+anyone
+him
+whose
+myself
+everybody
+ourselves
+himself
+somebody
+yours
+herself
+whoever
+```
+## verbs used
+```markdown
+is
+are
+has
+get
+see
+need
+know
+would
+find
+take
+want
+does
+learn
+become
+come
+include
+thank
+provide
+create
+add
+understand
+consider
+choose
+develop
+remember
+determine
+grow
+allow
+supply
+bring
+improve
+maintain
+begin
+exist
+tend
+enjoy
+perform
+decide
+identify
+continue
+protect
+require
+occur
+write
+approach
+avoid
+prepare
+build
+achieve
+believe
+receive
+seem
+discuss
+realize
+contain
+follow
+refer
+solve
+describe
+prefer
+prevent
+discover
+ensure
+expect
+invest
+reduce
+speak
+appear
+explain
+explore
+involve
+lose
+afford
+agree
+hear
+remain
+represent
+apply
+forget
+recommend
+rely
+vary
+generate
+obtain
+accept
+communicate
+complain
+depend
+enter
+happen
+indicate
+suggest
+survive
+appreciate
+compare
+imagine
+manage
+differ
+encourage
+expand
+prove
+react
+recognize
+relax
+replace
+borrow
+earn
+emphasize
+enable
+operate
+reflect
+send
+anticipate
+assume
+engage
+enhance
+examine
+install
+participate
+intend
+introduce
+relate
+settle
+assure
+attract
+distribute
+overcome
+owe
+succeed
+suffer
+throw
+acquire
+adapt
+adjust
+argue
+arise
+confirm
+encouraging
+incorporate
+justify
+organize
+ought
+possess
+relieve
+retain
+shut
+calculate
+compete
+consult
+deliver
+extend
+investigate
+negotiate
+qualify
+retire
+rid
+weigh
+arrive
+attach
+behave
+celebrate
+convince
+disagree
+establish
+ignore
+imply
+insist
+pursue
+remaining
+specify
+warn
+accuse
+admire
+admit
+adopt
+announce
+apologize
+approve
+attend
+belong
+commit
+criticize
+deserve
+destroy
+hesitate
+illustrate
+inform
+manufacturing
+persuade
+pour
+propose
+remind
+shall
+submit
+suppose
+translate
+```
+```
+```
+### endd of project 1
 ### Lab1
 
 ```markdown
