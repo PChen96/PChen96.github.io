@@ -1429,6 +1429,625 @@ int main() {
 }
 	
 ```
+### Lab 8 
+```markdown
+/*
+  Author:Phillip Chen
+  Course: 136
+  Instructor: Alex Vikolaev
+  Assignment: Lab 8 Task 1
+  Description:
+    The program reads a file and puts it into a structure (type Word) called w.
+    Then it outputs the name of the country and its population at 2000.
+*/
+#include <iostream>
+#include <fstream>
+#include <cstdlib>
+
+using namespace std;
+const int MAXCOUNTRIES = 500;
+
+struct Country{
+	string name;
+	int pop[8];
+	};
+	
+struct World{
+	int numcountries;
+	Country countries[MAXCOUNTRIES];
+	};
+	
+void readData(World &world);
+
+int main(){						
+	World w;
+    readData(w);
+    for(int i = 0; i<w.numcountries; i++)
+   	{
+    	cout<<w.countries[i].name<<" "<<w.countries[i].pop[6]<<endl;
+   	}
+}
+
+void readData(World &world){
+
+	ifstream f;
+	f.open("population.csv");
+
+	if (f.fail()){
+		cout<<"Cannot find file"<<endl;
+		exit(1);//cstdlib library
+		}
+
+	string nm;
+	double p50,p70,p90,p10,p15;
+	world.numcountries=0;
+
+	while (f>>p50>>p70>>p90>>p10>>p15){
+		getline(f,nm);
+			Country c;
+			c.name =nm;
+			c.pop[0]= p50;
+			c.pop[1]= (p50+p70)/2;
+			c.pop[2]= p70;
+			c.pop[3]= (p70+p90)/2;
+			c.pop[4]= p90;
+			c.pop[5]= (p90+p10)/2;
+			c.pop[6]= p10;
+			c.pop[7]= p15;
+			
+			world.countries[world.numcountries] = c;
+			
+			world.numcountries++;
+	}
+}
+
+```
+```markdown
+/*
+  Author:Phillip Chen
+  Course: 136
+  Instructor: Alex Vikolaev
+  Assignment: Lab 8 Task 2
+  Description:
+    The program reads a file nad puts it into a structure (type Word) called w.
+    It calculates the countries relative growth rate and then
+    outputs the maximum and minimum countries in terminal.
+*/
+#include <iostream>
+#include <fstream>
+#include <cstdlib>
+
+using namespace std;
+const int MAXCOUNTRIES = 500;
+
+struct Country{
+	string name;
+	int pop[8];
+	double relativeGrowth;
+	};
+	
+struct World{
+	int numcountries;
+	Country countries[MAXCOUNTRIES];
+	};
+	
+void readData(World &world, int &indexmin, int &indexmax);
+
+int main(){						
+	World w;
+	int indexmin, indexmax;
+    readData(w, indexmin, indexmax);
+    cout<<"Maximum"<<w.countries[indexmax].name<<" "<<(w.countries[indexmax].relativeGrowth)*100<<"%"<<endl;
+    cout<<"Minimum"<<w.countries[indexmin].name<<" "<<(w.countries[indexmin].relativeGrowth)*100<<"%"<<endl;
+
+}
+
+void readData(World &world, int &indexmin, int &indexmax){
+
+	ifstream f;
+	f.open("population.csv");
+
+	if (f.fail()){
+		cout<<"Cannot find file"<<endl;
+		exit(1);//cstdlib library
+		}
+
+	string nm;
+	double p50,p70,p90,p10,p15;
+	world.numcountries=0;
+	double min = 0;
+	double max = 0;
+	while (f>>p50>>p70>>p90>>p10>>p15){
+		getline(f,nm);
+		Country c;
+		c.name =nm;
+		c.pop[0]= p50;
+		c.pop[1]= (p50+p70)/2;
+		c.pop[2]= p70;
+		c.pop[3]= (p70+p90)/2;
+		c.pop[4]= p90;
+		c.pop[5]= (p90+p10)/2;
+		c.pop[6]= p10;
+		c.pop[7]= p15;
+		c.relativeGrowth=(p15 - p50) / p50;
+			
+		world.countries[world.numcountries] = c;
+
+		if (world.countries[world.numcountries].relativeGrowth < min){
+			min=world.countries[world.numcountries].relativeGrowth;
+			indexmin=world.numcountries;
+			}
+		if (world.countries[world.numcountries].relativeGrowth > max){
+			max=world.countries[world.numcountries].relativeGrowth;
+			indexmax=world.numcountries;
+			}
+			
+		world.numcountries++;
+	}
+}
+```
+```markdown
+/*
+  Author:Phillip Chen
+  Course: 136
+  Instructor: Alex Vikolaev
+  Assignment: Lab 8 Task 3
+  Description:
+    The program reads a file nad puts it into a structure (type Word) called w.
+   	It calculates the countries relative growth rate and then
+   	places the countries with negative relative growth rate in a struct and prints it out 
+*/
+#include <iostream>
+#include <fstream>
+#include <cstdlib>
+
+using namespace std;
+const int MAXCOUNTRIES = 500;
+
+struct Country{
+	string name;
+	int pop[8];
+	double relativeGrowth;
+	};
+	
+struct World{
+	int numcountries;
+	Country countries[MAXCOUNTRIES];
+	};
+	
+void readData(World &world, int &indexmin, int &indexmax);
+
+int main(){						
+	World w;
+	int indexmin, indexmax;
+    readData(w, indexmin, indexmax);
+	World negRG;
+	int indexneg;
+	
+	for(int i =0; i < w.numcountries ; i++){
+		if (w.countries[i].relativeGrowth<0){
+		negRG.countries[indexneg]=w.countries[i];
+		indexneg++;
+		}
+	}
+	for(int i = 0; i < indexneg ; i++){
+	cout<<negRG.countries[i].name
+	<<'\t'<<negRG.countries[i].relativeGrowth
+	<<'\t'<<negRG.countries[i].pop[7]
+	<<endl;}
+}
+
+void readData(World &world, int &indexmin, int &indexmax){
+
+	ifstream f;
+	f.open("population.csv");
+
+	if (f.fail()){
+		cout<<"Cannot find file"<<endl;
+		exit(1);//cstdlib library
+		}
+
+	string nm;
+	double p50,p70,p90,p10,p15;
+	world.numcountries=0;
+	double min = 0;
+	double max = 0;
+	while (f>>p50>>p70>>p90>>p10>>p15){
+		getline(f,nm);
+		Country c;
+		c.name =nm;
+		c.pop[0]= p50;
+		c.pop[1]= (p50+p70)/2;
+		c.pop[2]= p70;
+		c.pop[3]= (p70+p90)/2;
+		c.pop[4]= p90;
+		c.pop[5]= (p90+p10)/2;
+		c.pop[6]= p10;
+		c.pop[7]= p15;
+		c.relativeGrowth=(p15 - p50) / p50;
+			
+		world.countries[world.numcountries] = c;
+
+		if (world.countries[world.numcountries].relativeGrowth < min){
+			min=world.countries[world.numcountries].relativeGrowth;
+			indexmin=world.numcountries;
+			}
+		if (world.countries[world.numcountries].relativeGrowth > max){
+			max=world.countries[world.numcountries].relativeGrowth;
+			indexmax=world.numcountries;
+			}
+			
+		world.numcountries++;
+	}
+}
+```
+### Lab 9
+```markdown
+/*
+Author: Phillip Chen
+Course: 136
+Instructor: Alex Nikolaev
+Assignment: Lab9a
+
+This program will store an polynomial and computes its value.
+First it will ask the highest degree in your polynomial ( x^degree ).
+Second it will ask you to input constants next to each coefficent degree 
+( Each "Number" in "Number x^degree" )  
+Third it will ask you the value of the coefficent ( vaule of x )
+Forth it will compute the vaule of the entire polynomial
+*/
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+void print(double poly[], int degree);
+double eval(double poly[], int degree, double x);
+double * readPolynomial(int &degree);
+
+int main(){
+	int degree;
+	double *poly = readPolynomial(degree);
+	print (poly, degree);
+	
+	int x;
+	cout << "Input x: ";
+	cin >> x;
+	double result =	eval( poly, degree, x);
+	cout << result << endl;
+	delete[]poly;
+	poly = NULL;
+}
+
+double * readPolynomial(int &degree){
+	cout << "Enter the degree: ";
+	cin >> degree;	
+	double* d = new double[degree+1];
+	for (int i = degree ; i>=0  ;i--){
+		cout<<"Enter the coefficient at x^"<<i<<": ";
+		cin>>d[i];
+	}
+	return d;
+}
+	
+
+double eval(double poly[], int degree, double x){
+	double result = 0.0;
+	for (int i = degree ; i>=0  ;i--){
+		result += poly[i]*pow(x,i);
+		}
+	return result;
+} 
+
+void print(double poly[], int degree){
+	bool something_printed = false;
+	for (int i = degree ; i>=0  ;i--){
+		if (poly [i] != 0){
+			if (something_printed == true){
+				cout<<" + ";
+				}
+			if (i !=1 && i !=0){
+				cout << poly[i] <<" x^"<<i;
+				something_printed = true;
+				}
+			if (i == 1){
+				cout << poly[i] <<" x ";
+			}
+			if (i == 0){cout << poly[i];}	
+		}
+		if (i == 0){
+			cout << endl;
+		}
+	}
+}
+```
+```markdown
+/*
+Author: Phillip Chen
+Course: 136
+Instructor: Alex Nikolaev
+Assignment: Lab9 Task 2
+
+This program will store an polynomial and computes its value.
+First it will ask the highest degree in your polynomial ( x^degree ).
+Second it will ask you to input constants next to each coefficent degree 
+( Each "Number" in "Number x^degree" )  
+Third it will ask you the value of the coefficent ( vaule of x )
+Forth it will compute the vaule of the entire polynomial
+*/
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+void print(double poly[], int degree);
+double eval(double poly[], int degree, double x);
+double intersect(double poly1[], int degree1,double poly2[], int degree2 );
+double * readPolynomial(int &degree);
+
+int main(){
+	int degree1;
+	double *poly1 = readPolynomial(degree1);
+	print (poly1, degree1);
+	
+	int degree2;
+	double *poly2 = readPolynomial(degree2);
+	print (poly2, degree2);
+	
+	double lowestx = intersect( poly1, degree1, poly2, degree2 );
+	
+	if (lowestx == 0.0){
+		cout<<"There is no intersect"<<endl;
+	}
+	else{
+		cout <<"There is an intersect: "<< lowestx << endl;
+	}
+	
+	delete[]poly1;
+	poly1 = NULL;
+	delete[]poly2;
+	poly2 = NULL;
+}
+
+double * readPolynomial(int &degree){
+	cout << "Enter the degree: ";
+	cin >> degree;	
+	double* d = new double[degree+1];
+	for (int i = degree ; i>=0  ;i--){
+		cout<<"Enter the coefficient at x^"<<i<<": ";
+		cin>>d[i];
+	}
+	return d;
+}
+	
+
+double intersect(double poly1[], int degree1,double poly2[], int degree2){
+	double result1 = 0.0;
+	double result2 = 0.0;
+	double x = 1;
+	if (degree1 < degree2 && poly1[0] > poly2[0] ){ 
+		while (result2>result1){				
+			result1 = eval(poly1, degree1, x);
+			result2 = eval(poly2, degree2, x);
+				x += .1;
+				cout<<x;
+		}
+	}
+	if (degree1 > degree2 && poly1[0] < poly2[0] ){ 
+		while (result2>result1){				
+			result1 = eval(poly1, degree1, x);
+			result2 = eval(poly2, degree2, x);
+				x += .1;
+				cout<<x;
+		}
+	}
+	if (degree1 = degree2 && poly1[0] > poly2[0] ){ 
+		while (result2>result1){				
+			result1 = eval(poly1, degree1, x);
+			result2 = eval(poly2, degree2, x);
+				x += .1;
+				cout<<x;
+		}
+	}
+return x;
+} 
+
+double eval(double poly[], int degree, double x){
+	double result = 0.0;
+	for (int i = degree ; i>=0  ;i--){
+		result += poly[i]*pow(x,i);
+		}
+	return result;
+} 
+
+void print(double poly[], int degree){
+	bool something_printed = false;
+	for (int i = degree ; i>=0  ;i--){
+		if (poly [i] != 0){
+			if (something_printed == true){
+				cout<<" + ";
+				}
+			if (i !=1 && i !=0){
+				cout << poly[i] <<" x^"<<i;
+				something_printed = true;
+				}
+			if (i == 1){
+				cout << poly[i] <<" x ";
+			}
+			if (i == 0){cout << poly[i];}	
+		}
+		if (i == 0){
+			cout << endl;
+		}
+	}
+}
+
+```
+### Lab 11
+```markdown
+/*
+Author: Phillip Chen
+Course: 136
+Instructor: Alex Nikolaev
+Assignment: Lab11 Task 1
+
+This program makes an vector with 1,2,3,4,5,6,7,8,9,10 in it.
+The function gets the sum of the values inside the vector by 
+identifying the last element while removing that element from the vector. 
+repeat that process until the vector is empty.
+Once its empty, this is the base case (keeping the function from repeating infinitely) 
+so we return a value (in this casue it is zero because we are doing addition and we dont want it
+to affect the end result).
+Then add all the number pulled out of the vector to get our answer
+*/
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int sum(vector<int> v); 
+	
+int main(){
+
+	vector<int> v;
+	for (int i = 1; i <=10; i++){
+		v.push_back(i);
+		}
+	
+	for (int i = 0; i <= v.size(); i++){
+		cout<<v[i]<<" ";
+		}cout<<endl;
+		
+	int result = sum(v); 
+	cout<<result<<endl;
+	return 0;
+}
+
+int sum(vector<int> v){
+	if (v.size() > 0){
+		int last = v[v.size()-1];
+		v.pop_back();
+		return sum(v) + last;
+	}
+	else
+		return 0;	
+}	
+```
+```markdown
+/*
+Author: Phillip Chen
+Course: 136
+Instructor: Alex Nikolaev
+Assignment: Lab11 Task 2
+
+This program makes an vector with random numbers in it.
+The function gets maximum value in the vector by comparing the last two elements of the vector.
+First I saved the last element of the vector on to a variable.
+Then I compared that last element value with the 2nd last element of the vector.
+Then I removed the last element in the vector and 
+if the element removed was a bigger value, replace last spot in the vector.
+if the element remove was a lower value, no change is needed.
+Base case would be when the vector size is only 1 ( the maximum value in the vector ), returns itself.
+*/
+#include <iostream>
+#include <vector>
+#include <cstdlib>
+using namespace std;
+
+int maximum(vector<int> v); 
+	
+int main(){
+
+	vector<int> v;
+	for (int i = 1; i <=10; i++){
+		v.push_back(rand() % 100 + 1);
+		}
+	for (int i = 0; i <= v.size()-1; i++){
+		cout<<v[i]<<" ";
+	}
+	cout<<endl;
+	int result = maximum(v);
+	cout<<"Maximum:"<<result<<endl;
+	return 0;
+}
+
+int maximum(vector<int> v){
+	if (v.size() > 1){
+		int last1 = v[v.size()-1];
+		int last2 = v[v.size()-2];
+		v.pop_back();
+
+		if (last1 > last2){
+			v[v.size()-1]=last1;
+			return maximum(v);
+		}
+		else{
+			return maximum(v);
+		}
+	}
+	else
+		return v[0];	
+}
+	
+```
+```markdown
+/*
+Author: Phillip Chen
+Course: 136
+Instructor: Alex Nikolaev
+Assignment: Lab11 Task 3
+
+This program takes a string input and decides if it is well-formed or not.
+To be well formed the string has to have pairing symbols of [],{}, and <>.
+For example <{[])> is well formed. <{{]}> is not well formed because {] is not the pairing correctly
+*/
+#include <iostream>
+#include <string>
+using namespace std;
+
+bool wellFormed(string s); 
+
+int main(){
+	string s;
+	cout<<"Please input string: ";
+	getline(cin,s);
+	
+	bool result = wellFormed(s); 
+	
+	if (result == true){  
+		cout<<"YES"<<endl;
+	}
+	else{
+		cout<<"NO"<<endl;
+	}
+	return 0;
+}
+
+bool wellFormed(string s){
+	if (s.size()>2){
+		bool outer_symbols =( 	s[0]=='{' && s[s.size()-1]=='}' ||  
+					s[0]=='[' && s[s.size()-1]==']'	||
+					s[0]=='<' && s[s.size()-1]=='>');
+		return ( outer_symbols && wellFormed(s.substr (1,s.size()-2) ) );
+	}
+	//base case when only 2 slot are left
+	if (s.size()==2){
+		bool outer_symbols =( 	s[0]=='{' && s[s.size()-1]=='}' ||  		
+					s[0]=='[' && s[s.size()-1]==']' ||  		
+					s[0]=='<' && s[s.size()-1]=='>');
+		return ( outer_symbols );
+	}
+	//base case if the string 0th element isnt one of these symbol output true
+	//if it is one of these symbol, then it is false because it does not have a symbol to pair with
+	if (s.size()==1){
+		return(s[0]!='{' && s[0]!='}'
+		&& s[0]!='[' && s[0]!=']'
+		&& s[0]!='<' && s[0]!='>');
+	}
+	if (s.size()==0){
+		return true;
+	}
+}
+```
+
+
 ### Jekyll Themes
 
 
