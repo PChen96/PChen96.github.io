@@ -234,7 +234,7 @@ int main()
 	
 }
 ```
-###lab3
+### Lab3
 ```markdown
 /*
 Author: Phillip Chen
@@ -426,6 +426,489 @@ for(double y=0; y<d;y++){
 }
 			
 ```
+### Lab 4
+```markdown
+/*
+Author: Phillip Chen
+Course: {135,136}
+Instructor: <Alex Nikolaev
+Assignment: Lab 4 task A
+
+Input two integars to computer C(n,k)
+overflows at C(13,1)
+*/
+#include <iostream>
+using namespace std;
+
+int main(){
+
+int n = 0;
+int k = 0;
+int producta = 1;
+int productb = 1;
+int productc = 1;
+int finalprod = 1;
+
+cout<<"input n: ";
+cin>>n;
+
+cout<<"input k: ";
+cin>>k;
+
+	for (int factor = 1; factor<= n; factor++) 
+		{
+		producta = producta * factor;
+		//cout<<"n: "<<producta<<'\t'<<"factor: "<<factor<<endl;
+		}
+	for (int factor = 1; factor<= k; factor++) 
+		{
+		productb = productb * factor;
+		//cout<<"k: "<<productb<<'\t'<<"factor: "<<factor<<endl;
+		}
+	for (int factor = 1; factor<= n-k; factor++) 
+		{
+		productc = productc * factor;
+		//cout<<"n-k: "<<productc<<'\t'<<"factor: "<<factor<<endl;
+		}
+	finalprod = producta/(productb*productc);
+
+cout<<"C("<<n<<","<<k<<"): "<<finalprod<<endl;
+}
+```
+
+```markdown
+/*
+Author: Phillip Chen
+Course: {135,136}
+Instructor: <Alex Nikolaev
+Assignment: Lab 4 task B
+
+user inputs two intergers to compute C(n,k)
+Allows the user to compute k <= n/2
+if you attemp to plug in a k >n/2 you'll get the wrong answer
+*/
+#include <iostream>
+using namespace std;
+
+int main(){
+
+int n = 0;
+int k = 0;
+int producta = 1;
+int productb = 1;
+int finalprod = 1;
+
+cout<<"input n: ";
+cin>>n;
+
+cout<<"input k: ";
+cin>>k;
+
+if (k <= n/2){ //removes (n-k)! in n!/[k!(n-k)!], computes n!/k!,computes small k
+	for (int factor = n-k+1; factor<= n; factor++) 
+		{
+		producta = producta * factor;
+		//cout<<"n "<<producta<<'\t'<<" factor: "<<factor<<endl;
+		}
+	for (int factor = 1; factor<= k; factor++) 
+		{
+		productb = productb * factor;
+		//cout<<"k "<<productb<<'\t'<<" factor: "<<factor<<endl;
+		}
+	}
+finalprod = producta/productb;
+	
+cout<<"C("<<n<<","<<k<<"): "<<finalprod<<endl;
+}
+```
+
+```markdown
+/*
+Author: Phillip Chen
+Course: {135,136}
+Instructor: <Alex Nikolaev
+Assignment: Lab 4 task C
+
+user inputs two intergers to compute C(n,k)
+Allows the user to compute k<= n/2 and k >n/2
+*/
+#include <iostream>
+using namespace std;
+
+int main(){
+
+int n = 0;
+int k = 0;
+int producta = 1;
+int productb = 1;
+int finalprod = 1;
+
+cout<<"input n: ";
+cin>>n;
+
+cout<<"input k: ";
+cin>>k;
+
+if (k <= n/2){ //removes (n-k)! in n!/[k!(n-k)!], computes n!/k!,computes small k
+	for (int factor = n-k+1; factor<= n; factor++) 
+		{
+		producta = producta * factor;
+		//cout<<"n "<<producta<<'\t'<<" factor: "<<factor<<endl;
+		}
+	for (int factor = 1; factor<= k; factor++) 
+		{
+		productb = productb * factor;
+		//cout<<"k "<<productb<<'\t'<<" factor: "<<factor<<endl;
+		}
+	}
+else{	//removes k! in n!/[k!(n-k)!] computes n!/(n-k)!, computes big k
+	for (int factor = k+1; factor<= n; factor++) 
+		{
+		producta = producta * factor;
+		//cout<<"n "<<producta<<'\t'<<" factor: "<<factor<<endl;
+		}
+	for (int factor = 1; factor<= n-k; factor++) 
+		{
+		productb = productb * factor;
+		//cout<<"k "<<productb<<'\t'<<" factor: "<<factor<<endl;
+		}
+}
+finalprod = producta/productb;
+	
+cout<<"C("<<n<<","<<k<<"): "<<finalprod<<endl;
+}
+```
+```markdown
+/*
+Author: Phillip Chen
+Course: {135,136}
+Instructor: <Alex Nikolaev
+Assignment: Lab 4 task D
+
+Input two integars to compute C(n,k)
+this program can compute larger values of n and k
+*/
+#include <iostream>
+using namespace std;
+
+int main(){
+
+double n = 0;
+double k = 0;
+double producta = 1;
+double productb = 1;
+
+cout<<"input n: ";
+cin>>n;
+
+cout<<"input k: ";
+cin>>k;
+
+for(int i = 1; i < k+1; i++){
+	producta=1+(n-k)/i;
+	productb=producta*productb;
+	//cout<<"productb :"<<productb<<'\t'<<"i: "<<i<<endl;
+	}
+
+cout<<"C("<<n<<","<<k<<"): "<<productb<<endl;
+}
+```
+### Lab 5
+```markdown
+/*
+Author: Phillip Chen
+Course: {135,136}
+Instructor: <Alex Nikolaev
+Assignment: <Lab 5a
+
+This program takes one input, a non negative number. It tells you how many digits long that digit with a function
+*/
+
+# include <iostream>
+using namespace std;
+
+int numDigit(int num){
+	int counter = 0;
+	while (num>=10){
+		num = num/10;
+		counter++;
+	}
+	counter=counter+1;
+	return counter;
+}
+
+int main(){
+
+	cout<<"Enter number: ";
+	int num = 0;
+	cin>>num;
+		
+	int result = numDigit(num);
+	cout << result << endl;
+
+}
+
+```
+```markdown
+/*
+Author: Phillip Chen
+Course: {135,136}
+Instructor: <Alex Nikolaev
+Assignment: <Lab 5b
+
+This program takes one input, a non negative number. It tells you how many digits long that digit with a function
+*/
+
+# include <iostream>
+using namespace std;
+
+int numDigit(int num){
+	int counter = 0;
+	while (num>=10){
+		num = num/10;
+		counter++;
+	}
+	counter=counter+1;
+	return counter;
+}
+
+int getDigit(int num, int result, int index){
+	for(int i=0;i<result-index+1;i++){	//5-2 of 12345 3
+		if(i<result-index){
+			num=num/10;
+			}
+		else{ num=num%10;
+			  return num;
+			}
+		}
+	}
+int main(){
+
+	cout<<"Enter number: ";
+	int num = 0;
+	cin>>num;
+	cout<<"Enter index: ";
+	int index = 0;
+	cin>>index;
+
+	int result=numDigit(num);
+
+	int digit = getDigit(num,result,index);
+	cout<<digit<<endl;
+	
+
+}
+```
+```markdown
+/*
+Author: Phillip Chen
+Course: {135,136}
+Instructor: <Alex Nikolaev
+Assignment: <Lab 5b repeating
+
+Reads your number to see if it is divisible by 9 and then changes the number to be divisible by 9
+*/
+
+# include <iostream>
+using namespace std;
+
+int numDigit(int ran){		//this function counts how many digits in number inputed
+	int counter = 0;		//counter, this will be returned
+	while (ran>=10){		//when ran >=10 divide 10 and repeat until 1 digit remains
+		ran = ran/10;
+		counter++;
+	}
+	counter=counter+1;		//counter records how many times loop repeated and adds 1 then returns
+	return counter;
+}
+
+int getsum(int num, int result){
+	int sum = 0;
+	for(int k = 1; k <= result; k++)	//repeat until you take every digit in number
+	{int ph=num;
+		for(int i=0;i<result-k+1;i++)		//removing digits by itself
+		{
+			if(i<result-k){						//dividing you need is at one's place
+				ph=ph/10;
+			}
+			else{ ph=ph%10;				//module to get the remainder getting the number by itself	
+			  	sum=ph+sum;				//add the number gotten with previous sums
+			}
+		}
+	}return sum;
+}
+
+void makeDivisibleByNine(int &num){
+	int ph = num % 10;
+	num=num-ph;
+	while(num%9!=0)
+	{num++;}
+	}
+	
+int main(){
+
+	cout<<"Enter number: ";
+	int num = 0;
+	cin>>num;
+
+	int result=numDigit(num);
+	int sum = 0;
+	int digit = getsum(num,result);
+	if(digit%9==0){					//this is to see if number inputed is divisible by 9
+	cout<<num<<endl;				
+	}
+	else{							//if it is not divisible by 9, we change the number
+	makeDivisibleByNine(num);
+	cout<<num<<endl;
+	}
+}
+```
+### Lab 6
+```markdown
+/*
+  Author:Phillip Chen
+  Course: 136
+  Instructor: Alex Vikolaev
+  Assignment: Lab 7 Task 1
+  Description:
+  
+    The program reads a PGM image from the file "inImage.pgm",
+    and outputs a modified image to "outImage.pgm". 
+    Most code are from task 0 (code given),
+    inserted code at 108-110 so that it outputs an inverse color image given
+*/
+#include <iostream>
+#include <cassert>
+#include <cstdlib>
+#include <fstream>
+using namespace std;
+
+const int MAX_W = 512;
+const int MAX_H = 512;
+
+// reads a PGM file.
+// Notice that: width and height are passed by reference!
+
+void readImage(int image[MAX_W][MAX_H], int &width, int &height) {
+	char c;
+	int x;
+	ifstream instr;
+	instr.open("inImage.pgm");
+	// read the header P2
+	instr >> c;
+	assert(c == 'P');
+	instr >> c;
+	assert(c == '2');
+	// skip the comments (if any)
+	while ((instr>>ws).peek() == '#') {
+		instr.ignore(4096, '\n');
+	}
+	instr >> width;
+	instr >> height;
+	assert(width <= MAX_W);
+	assert(height <= MAX_H);
+	int max;
+	instr >> max;
+	assert(max == 255);
+	for (int row = 0; row < height; row++)
+		for (int col = 0; col < width; col++)
+			instr >> image[col][row];
+	instr.close();
+	return;
+}
+
+// Writes a PGM file
+void writeImage(int image[MAX_W][MAX_H], int width, int height) {
+	ofstream ostr;
+	ostr.open("outImage.pgm");
+	if (ostr.fail()) {
+		cout << "Unable to write file\n";
+		exit(1);
+	};
+
+	// print the header
+	ostr << "P2" << endl;
+	// width, height
+	ostr << width << ' ';
+	ostr << height << endl;
+	ostr << 255 << endl;
+	for (int row = 0; row < height; row++) {
+		for (int col = 0; col < width; col++) {
+			assert(image[col][row] < 256);
+			assert(image[col][row] >= 0);
+			ostr << image[col][row] << ' ';
+			// lines should be no longer than 70 characters
+			if ((col+1)%16 == 0) ostr << endl;
+		}
+		ostr << endl;
+	}
+	ostr.close();
+	return;
+}
+
+int main() {
+	int img[MAX_W][MAX_H];
+	int w, h;
+	readImage(img, w, h); // read it from the file "inImage.pgm"
+	// w and h were passed by reference and now contain the dimensions of the picture
+	// and the 2-dimesional array img contains the image data
+	// Now we can manipulate the image the way we like
+	// for example we copy its contents into a new array
+	//white is 255, black is 0
+	int out[MAX_W][MAX_H];
+	for(int x = 0; x < w; x++) {
+		for(int y = 0; y < h; y++) {
+			int c = img[x][y];
+			c = (c-255)*-1;//we want to change 0 to 255, 255 to 0 and 127 to 128
+			out[x][y] = c;//saves changes into a different array
+		}
+	}
+	// and save this new image to file "outImage.pgm"
+	writeImage(out, w, h);
+}
+
+```
+```markdown
+
+```markdown
+```
+```markdown
+
+```
+```markdown
+
+```
+```markdown
+
+```
+```markdown
+
+```
+```markdown
+
+```
+```markdown
+
+```
+```markdown
+
+```
+```markdown
+
+```
+```markdown
+
+```
+```markdown
+
+```
+```markdown
+
+```
+```markdown
+
+```
+
 ### Jekyll Themes
 
 
