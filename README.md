@@ -3,17 +3,16 @@
 ### Lab1
 
 ```markdown
-/*
-Author: Phillip Chen
-Course: {135,136}
-Instructor: Alexey Nikolaev
-Assignment: Lab 1 - Task B
 
+//Author: Phillip Chen
+//Course: {135,136}
+//Instructor: Alexey Nikolaev
+//Assignment: Lab 1 - Task B
 
-the example uses the time from the computer and compares it to the sunset time you set
-if the computer time is before sunset time itll say good afternoon
-if the computer time is after sunset time itll say good evening
-*/
+//the example uses the time from the computer and compares it to the sunset time you set
+//if the computer time is before sunset time itll say good afternoon
+//if the computer time is after sunset time itll say good evening
+
 
 #include <iostream>
 #include <ctime>
@@ -61,16 +60,16 @@ int main () {
 
 ```
 ```markdown
-/*
-Author: Phillip Chen
-Course: {135,136}
-Instructor: Alexey Nikolaev
-Assignment: Lab 1 - Task C
 
-This program says good morning if the computer time is before noon (12)or
-good afternoon or good evening depending on the time you set for sunset
-it will also calculate when you'll arrive home when you provide commute time
-*/
+//Author: Phillip Chen
+//Course: {135,136}
+//Instructor: Alexey Nikolaev
+//Assignment: Lab 1 - Task C
+
+//This program says good morning if the computer time is before noon (12)or
+//good afternoon or good evening depending on the time you set for sunset
+//it will also calculate when you'll arrive home when you provide commute time
+
 #include <iostream>
 #include <ctime>
 using namespace std;
